@@ -12,7 +12,7 @@ body {
 
 .grid {
   display: grid;
-  max-width: 300px;
+  max-width: 400px;
   width: 100%;
   padding: 20px;
   gap: 20px;
@@ -24,7 +24,12 @@ body {
   border: 1px solid #000;
   height: 0;
   padding-bottom: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .cell-activated {
   background-color: green;
+}
+button{
+  color: #fff;
 }
