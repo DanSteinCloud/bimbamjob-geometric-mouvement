@@ -1,14 +1,15 @@
 import React from 'react';
+import {useState, useEffect, useRef} from "react";
 
-export default function Grille({filled, onClick, isDisabled, label, showCoordinate, coordinate}) {
+export default function GrilleTondue({currentCell, value, fullfilled, onClick, isDisabled, enabled,label, showCoordinate, coordinate}) {
  return (
    <button
       type="button"
-      color="white"
+      color="black"
       aria-label={label}
       disabled={isDisabled}
       onClick={onClick}
-      className={filled ? "cell cell-activated" : "cell"}
+      className="cell"
    >{showCoordinate ? `(` + coordinate[0] + `,` + coordinate[1] + `)`: ''}
    </button>
 );

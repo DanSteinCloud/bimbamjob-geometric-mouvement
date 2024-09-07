@@ -1,71 +1,18 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # bimbamjob-geometric-mouvement
+
+1 - Selon les spécifications du projet, nous faisons bouger une tondeuse dans un repère orthonormé de centre O (0,0), O étant la cellule la plus basse à gauche.
+
+2 - Pour la commande en paire de chiffre, le premier chiffre représente l’abscisse et le second l’ordonnée. Donc toutes les commande en chiffre seront exécutées.
+
+3 – Cependant pour les commandes en lettre, l’image par une rotation de centre O et d’angle 90° d’un point situe à l’intérieur du rectangle est forcément un point en dehors du rectangle, puisque la rotation est une fonction impaire. Or selon les spécifications, tout mouvement qui forcerait la tondeuse à se retrouver en dehors de la pelouse n’est pas exécutée, donc les commandes R et L comptent seulement pour du beurre, elles ne seront pas exécutées. 
+
+3 - Finalement seule la lettre F sera exécutée à condition que son point image reste aussi dans le rectangle. Et selon le fichier.txt seules les 4 commandes F peuvent être exécutées.
+
+4 – Il y’a aussi une ambiguïté sur cette assertion « « F » signifie que l'on avance la tondeuse d'une case dans la direction à laquelle elle fait face « des spécifications. A mon point de vue la direction d’un mouvement, c’est sa gauche et sa droite s’il est horizontale, le sud et le nord s’il est vertical. Sur ce, l’idée de faire avancer la tondeuse en face d’une direction me parait déconcertante, la direction n’étant pas une grandeur orientée, mais le sens peut être un vecteur orienté.
+
+5 - En plus il n'est pas mentionné de quelle position commence la seconde tondeuse et quel ficher la commande.
+
+6 - Je reste a votre ecoute pour plus de precision sur cette partie des spec.
+
+
+

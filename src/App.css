@@ -30,6 +30,9 @@ body {
 .cell-activated {
   background-color: green;
 }
-button{
+button.cell{
+  color: black;
+}
+button.cell-activated{
   color: #fff;
 }

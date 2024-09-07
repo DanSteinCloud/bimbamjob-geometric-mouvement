@@ -1,11 +1,15 @@
 import "./App.css";
 import {useState, useEffect, useRef} from "react";
-import Grille from "./components/Grille";
+import GrilleReverdie from "./components/GrilleReverdie";
+import GrilleTondue from "./components/GrilleTondue";
 import FICHIER_DE_COMMANDE_TONDEUSE from "./datasource/fichier.txt";
+import ExtraireLesLigneDeCommandes from "./helper/ExtraireLesLigneDeCommandes";
 
 export default function App() {
   const position = useRef(null);
+  const currentIndex = useRef(100);
   const [order, setOrder] = useState([]);
+
   const [showCoordinate, setShowCoordinate] = useState(false);
   const [newIndex, setNewIndex] = useState();
   const [data, setData] = useState();
@@ -18,6 +22,9 @@ export default function App() {
     [1, 1, 1, 1, 1 ,1],
     [1, 1, 1, 1, 1, 1],
   ];
+
+  const cheminDelaPremiereTondeuse = [5, 10, 15, 20, 25, 30, 20, 15, 10, 5]
+
   const coordinates = [
     [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
     [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5],
@@ -138,20 +145,30 @@ export default function App() {
         return [0, 0];
     }
   }
+
+
   useEffect(() => {
+
+    currentIndex.current = 0;
+
     fetch(FICHIER_DE_COMMANDE_TONDEUSE)
       .then(function(response){
          return response.text();
       }).then(function (val) {
         setData(val);
-        console.log(data);
       })
   });
 
   useEffect(() => {
     position.current = affectCoordinates(newIndex);
   }, [newIndex]);
-
+  
+  const [canShow , setCanShow] = useState(false)
+  useEffect(() => {
+    const timer = setTimeout( () => setCanShow(true) , 2000)
+    return () => clearTimeout(timer); 
+  }, []);
+  
   return (
     <div className="wrapper">
       <div
@@ -161,10 +178,10 @@ export default function App() {
         }}
       >
         {surface.flat().map((value, index) => {
-          return value ? (
-            <Grille
+          return (value && canShow &&  cheminDelaPremiereTondeuse.includes(index)) ? (
+            <GrilleTondue
               key={index}
-              label={`Cell ${index}`}
+              label={`cell cell-activated`}
               filled={order.includes(index)}
               onClick={() => {couvrirSurfaceDeVerdure(index)}}
               coordinate={position.current}
@@ -172,13 +189,21 @@ export default function App() {
               isDisabled={order.includes(index) || isDeactivating}
             />
           ) : (
-            <span />
+            <GrilleReverdie
+              key={index}
+              label={`cell`}
+              filled={order.includes(index)}
+              onClick={() => {couvrirSurfaceDeVerdure(index)}}
+              coordinate={position.current}
+              showCoordinate={showCoordinate}
+              isDisabled={order.includes(index) || isDeactivating}  
+            />
           );
         })}
       </div>
       <div>
       <p>Cliquer du bas vers le haut, de la gauche vers la droite, pour recouvrir la surface à tondre</p>
-      <p>La tondeuse demarre une fois la dernièrre grille revouverte</p>
+      <p>La tondeuse demarre une fois la dernièrre grille recouverte</p>
       </div>
       
     </div>
