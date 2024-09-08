@@ -1,7 +1,15 @@
 import {React, useState} from "react";
+import FICHIER_DE_COMMANDE_TONDEUSE from "../datasource/fichier.txt";
 
-export default function ExtraireLesLigneDeCommandes(text){
-      text = "chgvjbmn"
+export default function ExtraireLesLigneDeCommandes(){
+      const [fichier, setFichier] = useState('');
+      fetch(FICHIER_DE_COMMANDE_TONDEUSE)
+      .then(function(response){
+        return response.text();
+      }).then(function (val) {
+        setFichier(val);
+        console.log("fichier lu :", fichier)
+      })
       const [wordsPerLine, setWordsPerLine] = useState(0);
       const [lines, setLines] = useState([]);
       const [containerWidth, setContainerWidth]= useState(getWindowDimensions());
@@ -15,7 +23,7 @@ export default function ExtraireLesLigneDeCommandes(text){
       }
     
       const calculateWordsPerLine = () => {
-        const words = text.split(" ");
+        const words = fichier.split(" ");
         let lineCount = 0;
         let currentLine = "";
         const dummyElement = document.createElement("div");

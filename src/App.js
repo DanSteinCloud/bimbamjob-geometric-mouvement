@@ -9,7 +9,8 @@ export default function App() {
   const position = useRef(null);
   const currentIndex = useRef(100);
   const [order, setOrder] = useState([]);
-
+  const [ligneDeCommandes, setLigneDeCommandes] = useState([]);
+  
   const [showCoordinate, setShowCoordinate] = useState(false);
   const [newIndex, setNewIndex] = useState();
   const [data, setData] = useState();
@@ -54,7 +55,6 @@ export default function App() {
     const newOrder = [...order, index];
     setOrder(newOrder);
     position.current = affectCoordinates(index);
-    console.log(position.current)
     setShowCoordinate(true);
     // deactivate
     if (newOrder.length === surface.flat().filter(Boolean).length) {
@@ -156,12 +156,13 @@ export default function App() {
          return response.text();
       }).then(function (val) {
         setData(val);
+        console.log("fichier lu :", data)
       })
   });
 
   useEffect(() => {
     position.current = affectCoordinates(newIndex);
-  }, [newIndex]);
+  }, [currentIndex.current]);
   
   const [canShow , setCanShow] = useState(false)
   useEffect(() => {
